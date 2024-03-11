@@ -14,7 +14,7 @@ class Todo(SQLModel, table=True):
 
 # only needed for psycopg 3 - replace postgresql
 # with postgresql+psycopg in settings.DATABASE_URL
-connection_string = str(settings.DATABASE_URL).replase(
+connection_string = str(settings.DATABASE_URL).replace(
     "postgresql", "postgresql+psycopg"
 )
 
@@ -22,7 +22,7 @@ connection_string = str(settings.DATABASE_URL).replase(
 #recycle connections after 5 minutes
 # to correspond with the compute scale down
 engine = create_engine(
-    connection_string, connect_args={"sslmode","require"}, pool_recycle=300
+    connection_string, connect_args={"sslmode":"require"}, pool_recycle=300
 )
 
 def create_db_and_tables():
